@@ -1,8 +1,10 @@
 package com.example.roomdatabase.room
 
 import androidx.activity.SystemBarStyle.Companion.auto
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity(tableName = "tbl Siswa")
+@Entity(tableName = "tblSiswa")
 data class Siswa (
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
