@@ -98,3 +98,60 @@ fun EntrySiswaBody(
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FormInputSiswa(
+    detailSiswa: DetailSiswa,
+    onValueChange: (DetailSiswa) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium)),
+        modifier = modifier
+    ) {
+
+        OutlinedTextField(
+            value = detailSiswa.nama,
+            onValueChange = { onValueChange(detailSiswa.copy(nama = it)) },
+            label = { Text(stringResource(R.string.nama)) },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+
+        OutlinedTextField(
+            value = detailSiswa.alamat,
+            onValueChange = { onValueChange(detailSiswa.copy(alamat = it)) },
+            label = { Text(stringResource(R.string.alamat)) },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+
+        OutlinedTextField(
+            value = detailSiswa.telepon,
+            onValueChange = { onValueChange(detailSiswa.copy(telepon = it)) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            label = { Text(stringResource(R.string.telepon)) },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+
+        if (enabled) {
+            Text(
+                text = stringResource(R.string.required_field),
+                modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium)),
+                color = Color.Red
+            )
+        }
+
+        HorizontalDivider(
+            modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_medium)),
+            thickness = dimensionResource(id = R.dimen.padding_small),
+            color = Color.Blue
+        )
+    }
+}
