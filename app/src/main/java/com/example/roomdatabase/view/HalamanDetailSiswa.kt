@@ -11,6 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -192,9 +193,8 @@ private fun DeleteConfirmationDialog(
     onDeleteCancel: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    AlertDialog(
-        onDismissRequest = { /* Do nothing */ },
-        title = { Text(stringResource(R.string.attention)) },
+    AlertDialog(onDismissRequest = { /* Do nothing */ },
+        title = {Text(stringResource(R.string.attention)) },
         text = { Text(stringResource(R.string.tanya)) },
         modifier = modifier,
         dismissButton = {

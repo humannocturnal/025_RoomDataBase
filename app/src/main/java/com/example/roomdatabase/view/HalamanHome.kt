@@ -43,6 +43,8 @@ import com.example.roomdatabase.R
 @Composable
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
+
+    navigateToItemUpdate:(Int) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -69,12 +71,13 @@ fun HomeScreen(
                 )
             }
         }
-    ) { innerPadding ->
-
+    ) {
+        innerPadding ->
         val uiStateSiswa by viewModel.homeUiState.collectAsState()
 
         BodyHome(
             itemSiswa = uiStateSiswa.listSiswa,
+            onSiswaClick = navigateToItemUpdate,
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
@@ -85,6 +88,7 @@ fun HomeScreen(
 @Composable
 fun BodyHome(
     itemSiswa: List<Siswa>,
+    onSiswaClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column (
@@ -101,6 +105,7 @@ fun BodyHome(
         } else {
             ListSiswa(
                 itemSiswa = itemSiswa,
+                onSiswaClick = {onSiswaClick(it.id)},
                 modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
             )
         }
