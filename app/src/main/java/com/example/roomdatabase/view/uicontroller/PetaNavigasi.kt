@@ -14,8 +14,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.roomdatabase.view.DetailSiswaScreen
+import com.example.roomdatabase.view.EditSiswaScreen
 import com.example.roomdatabase.view.route.DestinasiDetailSiswa
 import com.example.roomdatabase.view.route.DestinasiDetailSiswa.itemIdArg
+import com.example.roomdatabase.view.route.DestinasiEditSiswa
 import com.example.roomdatabase.viewmodel.DetailSiswa
 
 
@@ -67,9 +69,12 @@ fun HostNavigasi(
             )
         ) {
             DetailSiswaScreen(
-                navigateToEditItem = (navController.navigate("${DestinationEditSiswa.route}")),
-                navigateBack = { navController.navigateUp()}
+                navigateToEditItem = { itemId ->
+                    navController.navigate("${DestinasiEditSiswa.route}/$itemId")
+                },
+                navigateBack = { navController.navigateUp() }
             )
+
         }
         composable(
             route = DestinasiEditSiswa.routeWithArgs,
@@ -81,10 +86,8 @@ fun HostNavigasi(
         ) {
             EditSiswaScreen(
                 navigateBack = { navController.popBackStack() },
-                onNavigateUp = { navController.navigateUp() }
-            )
+                onNavigateUp = { navController.navigateUp() })
         }
-
     }
 }
 

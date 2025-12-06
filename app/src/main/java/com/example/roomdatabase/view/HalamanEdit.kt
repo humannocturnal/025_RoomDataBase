@@ -36,7 +36,7 @@ fun EditSiswaScreen(
 
         EntrySiswaBody(
             uiStateSiswa = viewModel.uiStateSiswa,
-            onSiswaValueChange = viewModel::updateUiState,
+            onValueChange = viewModel::updateUiState,
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.updateSiswa()
